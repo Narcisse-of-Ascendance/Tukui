@@ -1032,6 +1032,13 @@ if C["unitframes"].raidunitdebuffwatch == true then
 		--Baradin Hold
 			SpellName(95173), -- Consuming Darkness
 
+		--Firelands
+			--Baleroc
+			SpellName(99256), -- Torment
+			SpellName(99403), -- Tormented
+			SpellName(99262), -- Vital Spark
+			SpellName(99263), -- Vital Flame
+			
 		--Blackwing Descent
 			--Magmaw
 			SpellName(91911), -- Constricting Chains

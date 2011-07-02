@@ -186,10 +186,7 @@ local function SetupFlyoutButton()
 		--prevent error if you don't have max ammount of buttons
 		if _G["SpellFlyoutButton"..i] then
 			style(_G["SpellFlyoutButton"..i])
-					
-			if _G["SpellFlyoutButton"..i]:GetChecked() then
-				_G["SpellFlyoutButton"..i]:SetChecked(nil)
-			end
+			_G["SpellFlyoutButton"..i]:SetFrameLevel(_G["SpellFlyoutButton"..i]:GetParent():GetFrameLevel() + 5)
 		end
 	end
 end

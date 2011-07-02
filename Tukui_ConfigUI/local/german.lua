@@ -1,4 +1,4 @@
-﻿if GetLocale() == "deDE" then
+if GetLocale() == "deDE" then
 
 	-- update needed msg
 	TukuiL.option_update = "Du musst dein Tukui ConfigUI Addon aktualisieren wegen den letzten Änderungen von Tukui, bitte besuche www.tukui.org"

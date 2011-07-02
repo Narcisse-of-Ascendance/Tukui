@@ -1,4 +1,4 @@
-﻿TukuiL = { }
+TukuiL = { }
 
 -- update needed msg
 TukuiL.option_update = "You need to update your Tukui ConfigUI addon because of Tukui latest changes, please visit www.tukui.org"

@@ -1,4 +1,4 @@
-﻿local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
+local T, C, L = unpack(select(2, ...)) -- Import Functions/Constants, Config, Locales
 
 --Base code by Dawn (dNameplates), rewritten by Elv22
 if not C["nameplate"].enable == true then return end
