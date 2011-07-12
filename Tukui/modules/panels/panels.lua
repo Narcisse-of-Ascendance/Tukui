@@ -7,6 +7,19 @@ TukuiBar1:SetHeight((T.buttonsize * 2) + (T.buttonspacing * 3))
 TukuiBar1:SetFrameStrata("BACKGROUND")
 TukuiBar1:SetFrameLevel(1)
 
+local TukuiForteBar = CreateFrame("Frame", "TukuiForteBar", UIParent)
+TukuiForteBar:CreatePanel("Default", 1, 1, "BOTTOM", TukuiBar1, "TOP", 0, 6)
+TukuiForteBar:SetWidth((T.buttonsize * 24) + (T.buttonspacing * 27) + 12)
+TukuiForteBar:SetHeight((T.buttonsize * 1) + 4)
+TukuiForteBar:SetFrameStrata("BACKGROUND")
+TukuiForteBar:SetFrameLevel(2)
+TukuiForteBar:SetAlpha(0)
+--if T.lowversion then
+--	TukuiForteBar:SetAlpha(0)
+--else
+--	TukuiForteBar:SetAlpha(1)
+--end
+
 local TukuiBar2 = CreateFrame("Frame", "TukuiBar2", UIParent)
 TukuiBar2:CreatePanel("Default", 1, 1, "BOTTOMRIGHT", TukuiBar1, "BOTTOMLEFT", -6, 0)
 TukuiBar2:SetWidth((T.buttonsize * 6) + (T.buttonspacing * 7))
@@ -93,6 +106,14 @@ ileftlv:CreatePanel("Default", 2, 130, "BOTTOMLEFT", UIParent, "BOTTOMLEFT", 22,
 -- RIGHT VERTICAL LINE
 local irightlv = CreateFrame("Frame", "TukuiInfoRightLineVertical", TukuiBar1)
 irightlv:CreatePanel("Default", 2, 130, "BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -22, 30)
+
+-- LEFT FORTE LINE
+local ileftfx = CreateFrame("Frame", "TukuiForteLeftLineVertical", TukuiBar1)
+ileftfx:CreatePanel("Default", 2, 4, "BOTTOM", TukuiBar1, "TOPLEFT", 22, 0)
+
+-- RIGHT FORTE LINE
+local irightfx = CreateFrame("Frame", "TukuiForteRightLineVertical", TukuiBar1)
+irightfx:CreatePanel("Default", 2, 4, "BOTTOM", TukuiBar1, "TOPRIGHT", -22, 0)
 
 if not C.chat.background then
 	-- CUBE AT LEFT, ACT AS A BUTTON (CHAT MENU)

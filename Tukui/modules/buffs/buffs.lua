@@ -41,8 +41,8 @@ local function UpdateWeapons(button, slot, active, expiration)
 		button.texture:SetAllPoints()
 		
 		button.time = button:CreateFontString(nil, "ARTWORK")
-		button.time:SetPoint("BOTTOM", 0, -17)
-		button.time:SetFont(C.media.font, 12, "OUTLINE")
+		button.time:SetPoint("BOTTOM", 0, -13)
+		button.time:SetFont(C.media.font, 10, "OUTLINE")
 				
 		button.bg = CreateFrame("Frame", nil, button)
 		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
@@ -87,8 +87,8 @@ local function UpdateAuras(header, button, weapon)
 		button.count:SetFont(C.media.font, 12, "OUTLINE")
 
 		button.time = button:CreateFontString(nil, "ARTWORK")
-		button.time:SetPoint("BOTTOM", 0, -17)
-		button.time:SetFont(C.media.font, 12, "OUTLINE")
+		button.time:SetPoint("BOTTOM", 0, -13)
+		button.time:SetFont(C.media.font, 10, "OUTLINE")
 
 		button:SetScript("OnUpdate", UpdateTime)
 		
@@ -177,7 +177,7 @@ local function CreateAuraHeader(filter, ...)
 	header:SetAttribute("minWidth", 300)
 	header:SetAttribute("minHeight", 94)
 	header:SetAttribute("xOffset", -36)
-	header:SetAttribute("wrapYOffset", -68)
+	header:SetAttribute("wrapYOffset", -47)
 	header:SetAttribute("wrapAfter", 16)
 	header:SetAttribute("maxWraps", 2)
 	
@@ -223,10 +223,11 @@ start:SetScript("OnEvent", function(self)
 			frame:SetAttribute("xOffset", 36)
 		end
 		if position:match("BOTTOM") then
-			frame:SetAttribute("wrapYOffset", 68)
+			frame:SetAttribute("wrapYOffset", 47)
 		end
 		if T.lowversion then
 			frame:SetAttribute("wrapAfter", 8)
+			frame:SetAttribute("maxWraps", 4)
 		end
 	end
 end)

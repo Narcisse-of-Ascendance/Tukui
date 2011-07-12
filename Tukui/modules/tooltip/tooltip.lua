@@ -82,31 +82,31 @@ local function UpdateTooltip(self)
 	end
 	
 	if self:GetAnchorType() == "ANCHOR_NONE" and TukuiTooltipAnchor then
-		local point = TukuiTooltipAnchor:GetPoint()
-		if point == "TOPLEFT" then
-			self:ClearAllPoints()
-			self:SetPoint("TOPLEFT", TukuiTooltipAnchor, "BOTTOMLEFT", 0, -x)			
-		elseif point == "TOP" then
-			self:ClearAllPoints()
-			self:SetPoint("TOP", TukuiTooltipAnchor, "BOTTOM", 0, -x)			
-		elseif point == "TOPRIGHT" then
-			self:ClearAllPoints()
-			self:SetPoint("TOPRIGHT", TukuiTooltipAnchor, "BOTTOMRIGHT", 0, -x)			
-		elseif point == "BOTTOMLEFT" or point == "LEFT" then
-			self:ClearAllPoints()
-			self:SetPoint("BOTTOMLEFT", TukuiTooltipAnchor, "TOPLEFT", 0, x)		
-		elseif point == "BOTTOMRIGHT" or point == "RIGHT" then
+		--local point = TukuiTooltipAnchor:GetPoint()
+		--if point == "TOPLEFT" then
+		--	self:ClearAllPoints()
+		--	self:SetPoint("TOPLEFT", TukuiTooltipAnchor, "BOTTOMLEFT", 0, -x)			
+		--elseif point == "TOP" then
+		--	self:ClearAllPoints()
+		--	self:SetPoint("TOP", TukuiTooltipAnchor, "BOTTOM", 0, -x)			
+		--elseif point == "TOPRIGHT" then
+		--	self:ClearAllPoints()
+		--	self:SetPoint("TOPRIGHT", TukuiTooltipAnchor, "BOTTOMRIGHT", 0, -x)			
+		--elseif point == "BOTTOMLEFT" or point == "LEFT" then
+		--	self:ClearAllPoints()
+		--	self:SetPoint("BOTTOMLEFT", TukuiTooltipAnchor, "TOPLEFT", 0, x)		
+		--elseif point == "BOTTOMRIGHT" or point == "RIGHT" then
 			if TukuiBags and TukuiBags:IsShown() then
 				self:ClearAllPoints()
 				self:SetPoint("BOTTOMRIGHT", TukuiBags, "TOPRIGHT", 0, x)			
 			else
 				self:ClearAllPoints()
-				self:SetPoint("BOTTOMRIGHT", TukuiTooltipAnchor, "TOPRIGHT", 0, x)
+				self:SetPoint("BOTTOMRIGHT", "TukuiBar5", "BOTTOMLEFT", -x, 0)
 			end
-		else
-			self:ClearAllPoints()
-			self:SetPoint("BOTTOM", TukuiTooltipAnchor, "TOP", 0, x)		
-		end
+		--else
+		--	self:ClearAllPoints()
+		--	self:SetPoint("BOTTOM", TukuiTooltipAnchor, "TOP", 0, x)		
+		--end
 	end
 end
 

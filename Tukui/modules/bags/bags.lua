@@ -117,6 +117,28 @@ local StuffingTT = nil
 -- mostly from carg.bags_Aurora
 local QUEST_ITEM_STRING = nil
 
+local countSets = GetNumEquipmentSets()
+local arraySets = {}
+
+function getSetNameFromBagSlot(b)
+	local aSetName = ""
+	local itemId = GetContainerItemID(b.bag, b.slot)
+	if countSets and countSets > 0 then
+		for i=1, countSets do
+			aSetName = select(1, GetEquipmentSetInfo(i))
+			if not arraySets[aSetName] then
+				arraySets[aSetName] = GetEquipmentSetItemIDs(aSetName)
+			end
+			for j=1, 19 do
+				if arraySets[aSetName][j] and arraySets[aSetName][j] == itemId then
+					return aSetName
+				end
+			end
+		end
+	end
+	return nil
+end
+
 function Stuffing:SlotUpdate(b)
 	if not TukuiBags:IsShown() then return end -- don't do any slot update if bags are not show
 	local texture, count, locked = GetContainerItemInfo (b.bag, b.slot)
@@ -179,6 +201,21 @@ function Stuffing:SlotUpdate(b)
 	else
 		b.name, b.rarity, b.qitem = nil, nil, nil
 	end
+	
+	--Show equipment set name on item
+	--Remove 	it if it was already shown
+	if b.frame.text then
+		b.frame.text:SetText("")
+	end
+	if not b.frame.text then
+		b.frame.text = T.SetFontString(b.frame, C.media.uffont, 12)
+		b.frame.text:SetPoint("CENTER")
+	end
+	local setName = getSetNameFromBagSlot(b)
+	if setName then
+		b.frame.text:SetText(setName)
+	end
+
 	
 	SetItemButtonTexture(b.frame, texture)
 	SetItemButtonCount(b.frame, count)
