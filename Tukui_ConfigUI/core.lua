@@ -681,8 +681,8 @@ function CreateTukuiConfigUI()
 end
 
 do
-	SLASH_CONFIG1 = '/tc'
-	SLASH_CONFIG2 = '/tukui'
+	--SLASH_CONFIG1 = '/tc'
+	SLASH_CONFIG1 = '/tukui'
 	function SlashCmdList.CONFIG(msg, editbox)
 		if not TukuiConfigUI or not TukuiConfigUI:IsShown() then
 			CreateTukuiConfigUI()

@@ -37,6 +37,7 @@ end
 
 local function UpdateWeapons(button, slot, active, expiration)
 	if not button.texture then
+		--button:Size(20)
 		button.texture = button:CreateTexture(nil, "BORDER")
 		button.texture:SetAllPoints()
 		
@@ -45,7 +46,7 @@ local function UpdateWeapons(button, slot, active, expiration)
 		button.time:SetFont(C.media.font, 10, "OUTLINE")
 				
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", button:GetWidth()+2, button:GetHeight()+2, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 		button.bg:SetAlpha(0)
@@ -78,13 +79,14 @@ end
 local function UpdateAuras(header, button, weapon)
 	local name, _, texture, count, dtype, duration, expiration, caster = UnitAura(header:GetAttribute("unit"), button:GetID(), header:GetAttribute("filter"))
 	
+	--button:Size(20)
 	if(not button.texture) then
 		button.texture = button:CreateTexture(nil, "BORDER")
 		button.texture:SetAllPoints()
 
 		button.count = button:CreateFontString(nil, "ARTWORK")
 		button.count:SetPoint("BOTTOMRIGHT", -1, 1)
-		button.count:SetFont(C.media.font, 12, "OUTLINE")
+		button.count:SetFont(C.media.font, 10, "OUTLINE")
 
 		button.time = button:CreateFontString(nil, "ARTWORK")
 		button.time:SetPoint("BOTTOM", 0, -13)
@@ -93,7 +95,7 @@ local function UpdateAuras(header, button, weapon)
 		button:SetScript("OnUpdate", UpdateTime)
 		
 		button.bg = CreateFrame("Frame", nil, button)
-		button.bg:CreatePanel("Default", 30, 30, "CENTER", button, "CENTER", 0, 0)
+		button.bg:CreatePanel("Default", button:GetWidth()+2, button:GetHeight()+2, "CENTER", button, "CENTER", 0, 0)
 		button.bg:SetFrameLevel(button:GetFrameLevel() - 1)
 		button.bg:SetFrameStrata(button:GetFrameStrata())
 	end
@@ -176,8 +178,8 @@ local function CreateAuraHeader(filter, ...)
 	header:SetAttribute("point", "TOPRIGHT")
 	header:SetAttribute("minWidth", 300)
 	header:SetAttribute("minHeight", 94)
-	header:SetAttribute("xOffset", -36)
-	header:SetAttribute("wrapYOffset", -47)
+	header:SetAttribute("xOffset", -32)
+	header:SetAttribute("wrapYOffset", -42)
 	header:SetAttribute("wrapAfter", 16)
 	header:SetAttribute("maxWraps", 2)
 	
@@ -193,7 +195,7 @@ local function CreateAuraHeader(filter, ...)
 	header:SetBackdropBorderColor(0,0,0,0)
 	header:Show()
 	
-	header.text = T.SetFontString(header, C.media.uffont, 12)
+	header.text = T.SetFontString(header, C.media.uffont, 10)
 	header.text:SetPoint("CENTER")
 	if filter == "HELPFUL" then
 		header.text:SetText(L.move_buffs)
@@ -220,13 +222,13 @@ start:SetScript("OnEvent", function(self)
 			frame:SetAttribute("point", position)
 		end
 		if position:match("LEFT") then
-			frame:SetAttribute("xOffset", 36)
+			frame:SetAttribute("xOffset", 28)
 		end
 		if position:match("BOTTOM") then
-			frame:SetAttribute("wrapYOffset", 47)
+			frame:SetAttribute("wrapYOffset", 39)
 		end
 		if T.lowversion then
-			frame:SetAttribute("wrapAfter", 8)
+			frame:SetAttribute("wrapAfter", 12)
 			frame:SetAttribute("maxWraps", 4)
 		end
 	end

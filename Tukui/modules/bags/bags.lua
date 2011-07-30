@@ -117,10 +117,10 @@ local StuffingTT = nil
 -- mostly from carg.bags_Aurora
 local QUEST_ITEM_STRING = nil
 
-local countSets = GetNumEquipmentSets()
 local arraySets = {}
 
 function getSetNameFromBagSlot(b)
+	local countSets = GetNumEquipmentSets() -- Bug when you login count is 0, so I put it inside
 	local aSetName = ""
 	local itemId = GetContainerItemID(b.bag, b.slot)
 	if countSets and countSets > 0 then
@@ -206,8 +206,7 @@ function Stuffing:SlotUpdate(b)
 	--Remove 	it if it was already shown
 	if b.frame.text then
 		b.frame.text:SetText("")
-	end
-	if not b.frame.text then
+	else
 		b.frame.text = T.SetFontString(b.frame, C.media.uffont, 12)
 		b.frame.text:SetPoint("CENTER")
 	end

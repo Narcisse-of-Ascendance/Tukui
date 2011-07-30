@@ -117,6 +117,7 @@
 	<Script file="modules\blizzard\achievements.lua"/>
 	<Script file="core\movers.lua"/>
 	<Script file="modules\misc\raidutilities.lua"/>
+	<Script file="modules\misc\raidbuffreminder.lua"/>
 	<Script file="modules\skins\core.lua"/>
 	<Script file="modules\skins\achievement.lua"/>
 	<Script file="modules\skins\achievementpopup.lua"/>

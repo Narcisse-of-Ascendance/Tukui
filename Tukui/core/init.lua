@@ -17,3 +17,14 @@ Tukui = engine -- Allow other addons to use Engine
 --	This is how another addon imports the Tukui engine:	
 --	local T, C, L = unpack(Tukui)
 ---------------------------------------------------------------------------------
+
+if HelpMe then
+	local F, C, L = unpack(HelpMe)
+	F.AddLazyInit("tukui", function()
+		print("Lazy init woot!")
+		F.AddLibraryEntry("tukui", "Tukui!")
+		F.AddSubject("tukui", "sub1", "How to manager entries?")
+		F.AddChapter("tukui", "sub1", "chap1", "How to add entries?")
+		F.AddPage("tukui", "sub1", "chap1", 1, "You do this and that and this...")
+	end)
+end

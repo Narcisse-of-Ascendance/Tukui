@@ -622,11 +622,12 @@ local CreateAuraTimer = function(self, elapsed)
 	end
 end
 
-T.PostCreateAura = function(element, button)
+-- HACK FOR ARENA/BOSS FRAMES
+T.PostCreateAuraArena = function(element, button)
 	button:SetTemplate("Default")
 	
-	button.remaining = T.SetFontString(button, C["media"].font, C["unitframes"].auratextscale, "THINOUTLINE")
-	button.remaining:Point("CENTER", 1, 0)
+	button.remaining = T.SetFontString(button, C["media"].font, 12, "THINOUTLINE")
+	button.remaining:Point("CENTER", 0, 0)
 	
 	button.cd.noOCC = true		 	-- hide OmniCC CDs
 	button.cd.noCooldownCount = true	-- hide CDC CDs
@@ -637,9 +638,50 @@ T.PostCreateAura = function(element, button)
 	button.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 	button.icon:SetDrawLayer('ARTWORK')
 	
-	button.count:Point("BOTTOMRIGHT", 3, 3)
+	button.count:Point("BOTTOMRIGHT", 3, 0)
+	--button.count:SetPoint("BOTTOMRIGHT", button.icon, "BOTTOMRIGHT" 6, 6)
 	button.count:SetJustifyH("RIGHT")
-	button.count:SetFont(C["media"].font, 9, "THICKOUTLINE")
+	button.count:SetFont(C["media"].font, 10, "THINOUTLINE")
+	button.count:SetTextColor(0.84, 0.75, 0.65)
+	
+	button.overlayFrame = CreateFrame("frame", nil, button, nil)
+	button.cd:SetFrameLevel(button:GetFrameLevel() + 1)
+	button.cd:ClearAllPoints()
+	button.cd:Point("TOPLEFT", button, "TOPLEFT", 2, -2)
+	button.cd:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 2)
+	button.overlayFrame:SetFrameLevel(button.cd:GetFrameLevel() + 1)	   
+	button.overlay:SetParent(button.overlayFrame)
+	button.count:SetParent(button.overlayFrame)
+	button.remaining:SetParent(button.overlayFrame)
+			
+	button.Glow = CreateFrame("Frame", nil, button)
+	button.Glow:Point("TOPLEFT", button, "TOPLEFT", -3, 3)
+	button.Glow:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", 3, -3)
+	button.Glow:SetFrameStrata("BACKGROUND")	
+	button.Glow:SetBackdrop{edgeFile = C["media"].glowTex, edgeSize = 3, insets = {left = 0, right = 0, top = 0, bottom = 0}}
+	button.Glow:SetBackdropColor(0, 0, 0, 0)
+	button.Glow:SetBackdropBorderColor(0, 0, 0)
+end
+
+T.PostCreateAura = function(element, button)
+	button:SetTemplate("Default")
+	
+	button.remaining = T.SetFontString(button, C["media"].font, C["unitframes"].auratextscale, "THINOUTLINE")
+	button.remaining:Point("CENTER", 0, 0)
+	
+	button.cd.noOCC = true		 	-- hide OmniCC CDs
+	button.cd.noCooldownCount = true	-- hide CDC CDs
+	
+	button.cd:SetReverse()
+	button.icon:Point("TOPLEFT", 2, -2)
+	button.icon:Point("BOTTOMRIGHT", -2, 2)
+	button.icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+	button.icon:SetDrawLayer('ARTWORK')
+	
+	button.count:Point("BOTTOMRIGHT", 6, -4)
+	--button.count:SetPoint("BOTTOMRIGHT", button.icon, "BOTTOMRIGHT" 6, 6)
+	button.count:SetJustifyH("RIGHT")
+	button.count:SetFont(C["media"].font, 8, "THINOUTLINE")
 	button.count:SetTextColor(0.84, 0.75, 0.65)
 	
 	button.overlayFrame = CreateFrame("frame", nil, button, nil)
@@ -1005,6 +1047,8 @@ if C["unitframes"].raidunitdebuffwatch == true then
 			ALL = {
 				{14253, "RIGHT", {0, 1, 0}}, -- Abolish Poison
 				{23333, "LEFT", {1, 0, 0}}, -- Warsong flag xD
+				{99262, "LEFT", {1, 0, 0}}, -- Baleroc/Vital Spark
+				{99263, "RIGHT", {1, 0, 0}}, -- Baleroc/Vital Flame
 			},
 		}
 	end
@@ -1034,10 +1078,9 @@ if C["unitframes"].raidunitdebuffwatch == true then
 
 		--Firelands
 			--Baleroc
-			SpellName(99256), -- Torment
 			SpellName(99403), -- Tormented
-			SpellName(99262), -- Vital Spark
-			SpellName(99263), -- Vital Flame
+			SpellName(99256), -- Torment
+
 			
 		--Blackwing Descent
 			--Magmaw

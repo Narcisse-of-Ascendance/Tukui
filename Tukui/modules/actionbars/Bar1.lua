@@ -96,5 +96,5 @@ end)
 --------------------------------------------------------------------
 -- FORTE Xorcist Panel
 --------------------------------------------------------------------
-    local FXcdPanel = CreateFrame("Frame", "FXcdPanel", UIParent)
-    FXcdPanel:CreatePanel(FXcdPanel, 376, 36, "BOTTOM", TukuiBar1, "TOP", 0, 4)
+    --local FXcdPanel = CreateFrame("Frame", "FXcdPanel", UIParent)
+    --FXcdPanel:CreatePanel(FXcdPanel, 376, 36, "BOTTOM", TukuiBar1, "TOP", 0, 4)

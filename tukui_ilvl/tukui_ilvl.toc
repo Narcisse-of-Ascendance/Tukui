@@ -1,0 +1,7 @@
+## Interface: 40200
+## Title: |cffC495DDTukui Item Level on Tooltip|r
+## Author: Gsuz
+## Version: 1.0
+## Notes: Adds Average Item Level To Tooltips 
+## RequiredDeps: Tukui
+tukui_ilvl.lua

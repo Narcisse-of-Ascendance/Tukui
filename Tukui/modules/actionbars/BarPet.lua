@@ -37,7 +37,7 @@ bar:SetScript("OnEvent", function(self, event, arg1)
 			if i == 1 then
 				button:SetPoint("TOPLEFT", T.buttonspacing,-T.buttonspacing)
 			else
-				button:SetPoint("TOP", _G["PetActionButton"..(i - 1)], "BOTTOM", 0, -T.buttonspacing)
+				button:SetPoint("LEFT", _G["PetActionButton"..(i - 1)], "RIGHT", T.buttonspacing, 0)
 			end
 			button:Show()
 			self:SetAttribute("addchild", button)
